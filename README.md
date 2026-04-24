@@ -106,6 +106,6 @@ python src/visualize.py failures \
 
 ## Next Steps
 
-- [ ] Per-situation evaluation (open ice, board play, crease, face-off, scramble)
-- [ ] Cross-domain evaluation (SHL → NHL footage)
-- [ ] Architecture comparison
+- Per-situation evaluation (open ice, board play, crease, face-off, scramble)
+- Cross-domain evaluation (SHL → NHL footage)
+- Architecture comparison
