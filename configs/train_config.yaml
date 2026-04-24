@@ -10,7 +10,7 @@ epochs: 50
 patience: 10
 batch: 16
 imgsz: 1280
-workers = 4
+workers: 4
 
 # Optimization
 optimizer: AdamW
@@ -18,6 +18,6 @@ lr0: 0.001
 weight_decay: 0.0005
 
 # Output
-project: results
+project: /sfs/gpfs/tardis/home/pbp8nq/Documents/hockey-puck-detection/results
 name: hockeyai_baseline
 save_period: 5

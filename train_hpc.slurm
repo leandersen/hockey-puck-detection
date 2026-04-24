@@ -7,10 +7,10 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
+#SBATCH --account=shakeri_d
 
 # Load modules
-module load anaconda
-module load cuda/12.1.0
+module load miniforge/24.11.3-py3.12
 
 # Activate conda environment
 conda activate hockey

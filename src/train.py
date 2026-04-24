@@ -21,7 +21,7 @@ def load_config(config_path:str) -> dict:
         config = yaml.safe_load(f)
     return config
 
-def train(config_path:str)
+def train(config_path: str):
     config = load_config(config_path)
     device = get_device()
 
@@ -48,7 +48,7 @@ def train(config_path:str)
     )
 
     print("\nTraining complete.")
-    print(f'Results saved to: {config['project']}/{config['name']}')
+    print(f'Results saved to: {config["project"]}/{config["name"]}')
     return results
 
 if __name__ == '__main__':
