@@ -2,7 +2,7 @@
 
 Object detection project focused on puck detection in Swedish Hockey League (SHL) broadcast footage. Built on the [HockeyAI dataset](https://huggingface.co/SimulaMet-HOST/HockeyAI) using YOLOv8.
 
-My goal is to train a detector, then understand where and why* it fails across different game situations, and whether a model trained on SHL footage generalizes to other leagues.
+My goal is to train a detector, then understand where and why it fails across different game situations, and whether a model trained on SHL footage generalizes to other leagues.
 
 ---
 
@@ -67,8 +67,6 @@ All settings are controlled through `configs/train_config.yaml`. To train locall
 python src/train.py --config configs/train_config.yaml
 ```
 
-The script auto-detects your device - no changes needed.
-
 Results are saved to `results/hockeyai_baseline/`.
 
 ---
@@ -77,7 +75,7 @@ Results are saved to `results/hockeyai_baseline/`.
 
 This project fine-tunes [YOLOv8 medium](https://github.com/ultralytics/ultralytics) (pretrained on COCO) on the HockeyAI dataset. The detector is not built from scratch. My contribution here is the training setup, the per-situation evaluation methodology, and the analysis of where and why the model fails.
 
-YOLOv8 is a single-stage object detector developed by Ultralytics. It processes the full image in one pass and predicts bounding boxes and class labels directly, making it fast enough for real-time video applications. The medium variant (`yolov8m`) balances accuracy and speed reasonably well for this use case.
+YOLOv8 is a single-stage object detector developed by Ultralytics. It processes the full image in one pass and predicts bounding boxes and class labels directly, making it fast enough for real-time video applications. The medium variant (`yolov8m`) balances accuracy and speed for this use case.
 
 ---
 
@@ -107,5 +105,5 @@ python src/visualize.py failures \
 ## Next Steps
 
 - Per-situation evaluation (open ice, board play, crease, face-off, scramble)
-- Cross-domain evaluation (SHL → NHL footage)
+- Cross-domain evaluation (Compare SHL/NHL footage)
 - Architecture comparison
