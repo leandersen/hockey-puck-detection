@@ -1,0 +1,17 @@
+# Data
+data/
+
+# Cache
+.cache/
+__pycache__/
+*.pyc
+
+# Model weights
+*.pt
+*.pth
+
+# System
+.DS_Store
+
+hockey_puck_detection_project_plan.md
+hockey_puck_detection_project_plan.md.pdf
