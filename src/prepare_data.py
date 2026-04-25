@@ -1,8 +1,38 @@
 import os
 import shutil
 import random
+import zipfile
 from pathlib import Path
 import yaml
+from huggingface_hub import hf_hub_download
+
+def download_hockeyai(dst_dir: str = "data/hockeyai"):
+    """
+    Downloads and extracts the HockeyAI dataset from HuggingFace if not already present.
+
+    Args:
+        dst_dir: directory to extract into (will contain SHL/frames and SHL/annotations)
+    """
+    dst = Path(dst_dir)
+    frames_dir = dst / "SHL" / "frames"
+    annots_dir = dst / "SHL" / "annotations"
+
+    if frames_dir.exists() and annots_dir.exists():
+        print("HockeyAI dataset already present, skipping download.")
+        return
+
+    print("Downloading HockeyAI dataset from HuggingFace...")
+    zip_path = hf_hub_download(
+        repo_id="SimulaMet-HOST/HockeyAI",
+        filename="HockeyAI_Dataset.zip",
+        repo_type="dataset",
+        local_dir=dst,
+    )
+
+    print(f"Extracting {zip_path} ...")
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        zf.extractall(dst)
+    print("Extraction complete.")
 
 def prepare_hockeyai(
         src_frames_dir:str,
@@ -83,6 +113,7 @@ def prepare_hockeyai(
     return str(yaml_path)
 
 if __name__ == "__main__":
+    download_hockeyai(dst_dir="data/hockeyai")
     prepare_hockeyai(
         src_frames_dir = "data/hockeyai/SHL/frames",
         src_annots_dir= "data/hockeyai/SHL/annotations",
